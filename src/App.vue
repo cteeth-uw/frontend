@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import DicomViewer from './components/DicomViewer.vue' // 👈 Add this line
 </script>
 
 <template>
@@ -11,7 +12,6 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="You did it!" />
 
       <nav class="text-left flex space-x-4">
-
         <RouterLink
           to="/"
           class="block border-l border-custom-border px-4"
@@ -28,11 +28,15 @@ import HelloWorld from './components/HelloWorld.vue'
     </div>
   </header>
 
+  <!-- 👇 DWV Viewer here -->
+  <main class="p-4">
+    <DicomViewer />
+  </main>
+
   <RouterView />
 </template>
 
 <style scoped>
-
 nav a {
   padding: 0 1rem;
   border-left: 2px solid var(--color-border);
