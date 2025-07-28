@@ -15,10 +15,7 @@
     <div v-if="error" class="text-red-500 mt-2">{{ error }}</div>
     <div v-if="loading" class="text-gray-500">Loading scan...</div>
 
-    <div
-      id="dwv-container"
-      style="width: 512px; height: 512px; margin-top: 1rem;"
-    ></div>
+    <div id="dwv-container" style="width: 512px; height: 512px; margin-top: 1rem"></div>
   </div>
 </template>
 
@@ -50,7 +47,7 @@ export default defineComponent({
         app.init({
           containerDivId: 'dwv-container',
           //tools: ['Scroll', 'ZoomAndPan', 'WindowLevel'],
-          isMobile: false
+          isMobile: false,
         })
 
         app.addEventListener('load', () => {
@@ -64,8 +61,9 @@ export default defineComponent({
           loading.value = false
         })
 
-        console.log('[DWV] Calling app.loadURLs()')
+        console.log(`[DWV] Calling app.loadURLs([${url}])`)
         app.loadURLs([url])
+        console.log('[DWV] Finished calling app.loadURLs()')
       } catch (err: any) {
         console.error('[DWV] Unexpected error:', err)
         error.value = `Error initializing DWV: ${err?.message || err}`
@@ -77,8 +75,8 @@ export default defineComponent({
       filename,
       error,
       loading,
-      loadZipScan
+      loadZipScan,
     }
-  }
+  },
 })
 </script>
